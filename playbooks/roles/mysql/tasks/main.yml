@@ -1,0 +1,15 @@
+- name: Install MySQL Server
+  apt:
+    name: mysql-server
+    state: present
+
+- name: Configure MySQL settings
+  template:
+    src: my.cnf.j2
+    dest: /etc/mysql/my.cnf
+
+- name: Ensure MySQL is running
+  service:
+    name: mysql
+    state: started
+    enabled: yes
